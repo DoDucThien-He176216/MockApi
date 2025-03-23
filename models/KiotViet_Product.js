@@ -8,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
     description: { type: String },
     images: [{ type: String }], // Mảng chuỗi
 
-    categoryId: { type: Number },
+    categoryId: { type: Number },// thieu categories
     categoryName: { type: String },
     unit: { type: String },
     
@@ -18,17 +18,17 @@ const ProductSchema = new mongoose.Schema({
 
     hasVariants: { type: Boolean }, // boolean -> Boolean
 
-    attributes: [
-        {
-            productId: { type: Number },
-            attributeName: { type: String },
-            attributeValue: { type: String }
-        }
-    ],
+    // attributes: [
+    //     {
+    //         productId: { type: Number },
+    //         attributeName: { type: String },
+    //         attributeValue: { type: String }
+    //     }
+    // ],
 
     basePrice: { type: Number }, // decimal -> Number
 
-    inventories: [
+    inventories: [// hàng tồn kho
         {
             productId: { type: Number },
             productCode: { type: String },
