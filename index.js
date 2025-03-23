@@ -4,13 +4,13 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const PORT = process.env.PORT || 8000;
-const Customers = require('./models/CustomersSchema');
-const Receipts = require('./models/ReceiptsSchema');
-const Sales = require('./models/SalesSchema');
-const Banks = require('./models/BanksSchema');
-const InventoryOuts = require('./models/InventoryOutsSchema');
-const SaleItems = require('./models/SaleItemsSchema');
-const Goods = require('./models/GoodsSchema');
+const Customers = require('./models/Misa_CustomersSchema');
+const Receipts = require('./models/MiSa_ReceiptsSchema');
+const Sales = require('./models/MiSa_SalesSchema');
+const Banks = require('./models/MiSa_BanksSchema');
+const InventoryOuts = require('./models/MiSa_InventoryOutsSchema');
+const SaleItems = require('./models/MiSa_SaleItemsSchema');
+const Goods = require('./models/MiSa_GoodsSchema');
 
 
 const cors = require("cors");
@@ -27,6 +27,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const mongoose = require("mongoose");
 const { console } = require("inspector");
+const KiotViet_Customer = require("./models/KiotViet_Customer");
+const KiotViet_Branch = require("./models/KiotViet_Branch");
+const KiotViet_Product = require("./models/KiotViet_Product");
+const KiotViet_Supplier = require("./models/KiotViet_supplier");
+const KiotViet_supplier = require("./models/KiotViet_supplier");
 
 const MONGO_URI = "mongodb+srv://thienduc2552003:Ag1RjZY8IHBomCD3@mockdata.hacn2.mongodb.net/MockData?retryWrites=true&w=majority";
 
@@ -97,6 +102,15 @@ const createCrudRoutes = (model, route) => {
   createCrudRoutes(InventoryOuts, 'inventory-outs');
   createCrudRoutes(SaleItems, 'sale-items');
   createCrudRoutes(Goods, 'goods');
+
+  createCrudRoutes(KiotViet_Customer, 'kiotviet_customers');
+  createCrudRoutes(KiotViet_Branch, 'kiotviet_branchs');
+  createCrudRoutes(KiotViet_Product, 'kiotviet_products');
+  createCrudRoutes(KiotViet_supplier, 'kiotviet_suppliers');
+
+
+
+
 server.listen(PORT, () => {
     console.log("listening on *: " + PORT);
 });
