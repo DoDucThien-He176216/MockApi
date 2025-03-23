@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
 const BranchSchema = new mongoose.Schema({
-    branchName: { type: String },
-    branchCode: { type: String },
-    contactNumber: { type: String },
-    email: { type: String },
-    address: { type: String },
-    modifiedDate: { type: Date},
-    createdDate: { type: Date }
+    branchName: { type: String, required: true },
+    address: { type: String, required: true },
+    locationName: { type: String, required: true },
+    contactNumber: { type: String, required: true },
+    retailerId: { type: Number, required: true },
+    modifiedDate: { type: Date, required: true },
+    createdDate: { type: Date, required: true }
 });
 
 module.exports = mongoose.model("Branch", BranchSchema);

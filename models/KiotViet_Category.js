@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
 const CategorySchema = new mongoose.Schema({
-
+    parentId: { type: Number, default: null },
+    categoryName: { type: String, required: true },
+    retailerId: { type: Number, required: true },
+    modifiedDate: { type: Date, required: true },
+    createdDate: { type: Date, required: true },
+    rank: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model("Category", CategorySchema);

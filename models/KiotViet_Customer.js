@@ -12,7 +12,14 @@ const CustomerSchema = new mongoose.Schema({
   email: String,
   comments: String,
   groupIds: [Number],
-  branchId: [Number],
+  branchId: Number,  // Chỉnh lại thành Number
+  retailerId: Number,
+  modifiedDate: Date,
+  createdDate: Date,
+  type: Number,  // Thêm kiểu khách hàng
+  organization: String,
+  debt: Number,  // Thêm trường nợ
+  rewardPoint: Number  // Thêm điểm thưởng
 });
 
 module.exports = mongoose.model("KiotViet_Customer", CustomerSchema);

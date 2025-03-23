@@ -30,8 +30,9 @@ const { console } = require("inspector");
 const KiotViet_Customer = require("./models/KiotViet_Customer");
 const KiotViet_Branch = require("./models/KiotViet_Branch");
 const KiotViet_Product = require("./models/KiotViet_Product");
-const KiotViet_Supplier = require("./models/KiotViet_supplier");
 const KiotViet_supplier = require("./models/KiotViet_supplier");
+const KiotViet_PurchaseOrder = require("./models/KiotViet_PurchaseOrder");
+const KiotViet_Category = require("./models/KiotViet_Category");
 
 const MONGO_URI = "mongodb+srv://thienduc2552003:Ag1RjZY8IHBomCD3@mockdata.hacn2.mongodb.net/MockData?retryWrites=true&w=majority";
 
@@ -95,18 +96,20 @@ const createCrudRoutes = (model, route) => {
   };
   
   // Tạo API cho từng schema
-  createCrudRoutes(Customers, 'customers');
-  createCrudRoutes(Receipts, 'receipts');
-  createCrudRoutes(Sales, 'sales');
-  createCrudRoutes(Banks, 'banks');
-  createCrudRoutes(InventoryOuts, 'inventory-outs');
-  createCrudRoutes(SaleItems, 'sale-items');
-  createCrudRoutes(Goods, 'goods');
+  createCrudRoutes(Customers, 'misa-customers');
+  createCrudRoutes(Receipts, 'misa-receipts');
+  createCrudRoutes(Sales, 'misa-sales');
+  createCrudRoutes(Banks, 'misa-banks');
+  createCrudRoutes(InventoryOuts, 'misa-inventory-outs');
+  createCrudRoutes(SaleItems, 'misa-sale-items');
+  createCrudRoutes(Goods, 'misa-goods');
 
-  createCrudRoutes(KiotViet_Customer, 'kiotviet_customers');
-  createCrudRoutes(KiotViet_Branch, 'kiotviet_branchs');
-  createCrudRoutes(KiotViet_Product, 'kiotviet_products');
-  createCrudRoutes(KiotViet_supplier, 'kiotviet_suppliers');
+  createCrudRoutes(KiotViet_Customer, 'kiotviet-customers');
+  createCrudRoutes(KiotViet_Category, 'kiotviet-categories');
+  createCrudRoutes(KiotViet_Branch, 'kiotviet-branchs');
+  createCrudRoutes(KiotViet_Product, 'kiotviet-products');
+  createCrudRoutes(KiotViet_supplier, 'kiotviet-suppliers');
+  createCrudRoutes(KiotViet_PurchaseOrder, 'kiotViet-purchase-order');
 
 
 

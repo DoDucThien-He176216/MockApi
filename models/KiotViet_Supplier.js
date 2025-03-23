@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const SupplierSchema = new mongoose.Schema({
-  code: { type: String },
-  name: { type: String },
+  code: { type: String, required: true },
+  name: { type: String, required: true },
   contactNumber: { type: String },
   email: { type: String },
   address: { type: String },
@@ -13,16 +13,17 @@ const SupplierSchema = new mongoose.Schema({
   comments: { type: String },
   groups: { type: String },
   
-  isActive: { type: Boolean }, // boolean -> Boolean
-  modifiedDate: { type: Date }, // datetime -> Date
-  createdDate: { type: Date },
+  isActive: { type: Boolean, default: true }, // Mặc định là active
+  modifiedDate: { type: Date, default: Date.now },
+  createdDate: { type: Date, default: Date.now },
 
-  branchId: { type: Number }, // long -> Number
+  retailerId: { type: Number }, // Nếu muốn lưu retailerId từ response
+  branchId: { type: Number, required: true },
   createdBy: { type: String },
-  
-  debt: { type: Number }, // decimal -> Number
-  totalInvoiced: { type: Number }, 
-  totalInvoicedWithoutReturn: { type: Number }
+
+  debt: { type: Number, default: 0 },
+  totalInvoiced: { type: Number, default: 0 },
+  totalInvoicedWithoutReturn: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model("Supplier", SupplierSchema);

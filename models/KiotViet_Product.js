@@ -1,47 +1,40 @@
 const mongoose = require("mongoose");
-
+const InventorySchema = new mongoose.Schema({
+  productId: { type: Number },
+  branchId: { type: Number },
+  branchName: { type: String },
+  cost: { type: Number },
+  onHand: { type: Number },
+  reserved: { type: Number },
+  actualReserved: { type: Number },
+  minQuantity: { type: Number },
+  maxQuantity: { type: Number },
+  isActive: { type: Boolean },
+  onOrder: { type: Number }
+});
 const ProductSchema = new mongoose.Schema({
-    code: { type: String },
-    barCode: { type: String },
-    name: { type: String },
-    fullName: { type: String },
-    description: { type: String },
-    images: [{ type: String }], // Mảng chuỗi
-
-    categoryId: { type: Number },// thieu categories
-    categoryName: { type: String },
-    unit: { type: String },
-    
-    masterProductId: { type: Number },
-    masterUnitId: { type: Number },
-    conversionValue: { type: Number }, // double -> Number
-
-    hasVariants: { type: Boolean }, // boolean -> Boolean
-
-    // attributes: [
-    //     {
-    //         productId: { type: Number },
-    //         attributeName: { type: String },
-    //         attributeValue: { type: String }
-    //     }
-    // ],
-
-    basePrice: { type: Number }, // decimal -> Number
-
-    inventories: [// hàng tồn kho
-        {
-            productId: { type: Number },
-            productCode: { type: String },
-            productName: { type: String },
-            branchId: { type: Number },
-            branchName: { type: String },
-            onHand: { type: Number }, // double -> Number
-            cost: { type: Number }, // decimal -> Number
-            reserved: { type: Number }
-        }
-    ],
-
-    modifiedDate: { type: Date } // datetime -> Date
+  createdDate: { type: Date },
+  masterCode: { type: String },
+  id: { type: Number, unique: true },
+  retailerId: { type: Number },
+  code: { type: String },
+  name: { type: String },
+  fullName: { type: String },
+  categoryId: { type: Number },
+  categoryName: { type: String },
+  allowsSale: { type: Boolean },
+  type: { type: Number },
+  hasVariants: { type: Boolean },
+  basePrice: { type: Number },
+  conversionValue: { type: Number },
+  description: { type: String },
+  modifiedDate: { type: Date },
+  isActive: { type: Boolean },
+  isRewardPoint: { type: Boolean },
+  isLotSerialControl: { type: Boolean },
+  isBatchExpireControl: { type: Boolean },
+  inventories: [InventorySchema],
+  images: [{ type: String }]
 });
 
 module.exports = mongoose.model("Product", ProductSchema);
